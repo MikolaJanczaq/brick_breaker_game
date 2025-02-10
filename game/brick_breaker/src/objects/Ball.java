@@ -4,8 +4,8 @@ public class Ball extends Unit {
 
     private byte direction;
 
-    public Ball(int position_x, int position_y) {
-        super(position_x, position_y, 1, 1);
+    public Ball(int width, int height) {
+        super(width, height);
     }
 
     @Override

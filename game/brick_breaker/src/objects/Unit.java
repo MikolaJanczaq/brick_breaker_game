@@ -7,9 +7,7 @@ public  abstract class Unit {
     private int width;
     private int height;
 
-    Unit(int position_x, int position_y, int width, int height) {
-        this.position_x = position_x;
-        this.position_y = position_y;
+    Unit(int width, int height) {
         this.width = width;
         this.height=height;
     }

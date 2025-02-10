@@ -2,11 +2,15 @@ package objects;
 
 public class Brick extends Unit{
 
-    public static int counter = 0;
+    private static int counter = 0;
 
-    public Brick(int position_x, int position_y) {
-        super(position_x, position_y, 1, 1);
+    public Brick(int width, int height) {
+        super(width, height);
         counter++;
+    }
+
+    public static int getCounter() {
+        return counter;
     }
 
     @Override

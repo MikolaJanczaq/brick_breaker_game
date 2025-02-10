@@ -1,5 +1,7 @@
 package engine;
 
+import objects.Ball;
+import objects.Board;
 import objects.Brick;
 import objects.Unit;
 
@@ -52,12 +54,26 @@ public class Map {
         createBricks();
         for(int i=0; i<bricks_num; i++) {
             units_game[height-1-i/width][i%width] = bricks[i];
+            bricks[i].setPosition_x(i%width);
+            bricks[i].setPosition_y(height-1-i/width);
         }
     }
 
+    public void insert_board(Board board) {
+        for(int i=0; i<board.getWidth(); i++) {
+            units_game[0][getWidth()/2- board.getWidth()+1+i] = board; // setting board in the middle of the lowest row
+            //to do: make sure that it doesnt go off the array range
+        }
+    }
 
+    public void insert_ball(Ball ball) {
+        for(int i=0; i<ball.getWidth(); i++) {
+            units_game[bricks_num/height][width/2+1] = ball;
+        }
+    }
 
-
-
+    public Unit[][] getUnits_game() {
+        return units_game;
+    }
 
 }
