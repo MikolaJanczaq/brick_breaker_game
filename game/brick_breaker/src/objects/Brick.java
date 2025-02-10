@@ -14,7 +14,7 @@ public class Brick extends Unit{
     }
 
     @Override
-    public void move() {
+    public void move(int direction) {
         System.out.println("The bricks don't move");
     }
 

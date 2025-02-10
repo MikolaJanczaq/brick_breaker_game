@@ -46,6 +46,6 @@ public  abstract class Unit {
         this.height = height;
     }
 
-    public abstract void move();
+    public abstract void move(int direction);
 
 }

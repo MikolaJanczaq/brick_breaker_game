@@ -62,6 +62,7 @@ public class Map {
     public void insert_board(Board board) {
         for(int i=0; i<board.getWidth(); i++) {
             units_game[0][getWidth()/2- board.getWidth()+1+i] = board; // setting board in the middle of the lowest row
+            board.setDirectionPosition(i, getWidth()/2- board.getWidth()+1+i);
             //to do: make sure that it doesnt go off the array range
         }
     }
