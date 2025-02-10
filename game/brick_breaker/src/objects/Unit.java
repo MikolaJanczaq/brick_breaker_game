@@ -4,10 +4,14 @@ public  abstract class Unit {
 
     private int position_x;
     private int position_y;
+    private int width;
+    private int height;
 
-    Unit(int position_x, int position_y) {
+    Unit(int position_x, int position_y, int width, int height) {
         this.position_x = position_x;
         this.position_y = position_y;
+        this.width = width;
+        this.height=height;
     }
 
     //gettters
@@ -19,6 +23,14 @@ public  abstract class Unit {
         return position_y;
     }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
+
     //setters
     public void setPosition_x(int position_x) {
         this.position_x = position_x;
@@ -26,6 +38,14 @@ public  abstract class Unit {
 
     public void setPosition_y(int position_y) {
         this.position_y = position_y;
+    }
+
+    public void setWidth(int width) {
+        this.width = width;
+    }
+
+    public void setHeight(int height) {
+        this.height = height;
     }
 
     public abstract void move();
