@@ -1,7 +1,6 @@
 package objects;
 
 public  abstract class Unit {
-    public static int counter=0;
 
     private int position_x;
     private int position_y;
