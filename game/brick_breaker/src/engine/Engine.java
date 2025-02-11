@@ -34,7 +34,7 @@ public class Engine {
         int ballX = ball.getPositionX();
         int ballY = ball.getPositionY();
 
-        // Kolizje ze ścianami
+        // collision with walls
         if (ballX < 0) {
             ball.setPositionX(0);
             ball.setVelocity(-ball.getVelocityX(), ball.getVelocityY());

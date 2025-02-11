@@ -1,9 +1,14 @@
-import game.Game;
+import game.GameFrame;
+
+import javax.swing.*;
+
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Game is starting!");
-        Game game = new Game();
-        game.start();
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                new GameFrame().setVisible(true);
+            }
+        });
     }
 }
