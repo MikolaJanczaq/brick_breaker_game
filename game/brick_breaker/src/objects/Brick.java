@@ -1,6 +1,6 @@
 package objects;
 
-public class Brick extends Unit{
+public class Brick extends Unit {
 
     private static int counter = 0;
 
@@ -17,5 +17,4 @@ public class Brick extends Unit{
     public void move(int direction) {
         System.out.println("The bricks don't move");
     }
-
 }

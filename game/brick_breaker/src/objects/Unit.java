@@ -1,20 +1,20 @@
 package objects;
 
-public  abstract class Unit {
+public abstract class Unit {
 
     private int positionX;
     private int positionY;
     private int width;
     private int height;
 
-    Unit(int positionX, int positionY,int width, int height) {
+    public Unit(int positionX, int positionY, int width, int height) {
         this.positionX = positionX;
         this.positionY = positionY;
         this.width = width;
-        this.height=height;
+        this.height = height;
     }
 
-    //gettters
+    // Getters
     public int getPositionX() {
         return positionX;
     }
@@ -31,7 +31,7 @@ public  abstract class Unit {
         return height;
     }
 
-    //setters
+    // Setters
     public void setPositionX(int positionX) {
         this.positionX = positionX;
     }
@@ -49,5 +49,4 @@ public  abstract class Unit {
     }
 
     public abstract void move(int direction);
-
 }
