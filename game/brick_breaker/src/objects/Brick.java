@@ -4,8 +4,8 @@ public class Brick extends Unit{
 
     private static int counter = 0;
 
-    public Brick(int width, int height) {
-        super(width, height);
+    public Brick(int positionX, int positionY, int width, int height) {
+        super(positionX, positionY, width, height);
         counter++;
     }
 

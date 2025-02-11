@@ -5,8 +5,8 @@ public class Board extends Unit{
     // maybe make board an array for exapmle int[5] board and then moving ball according to the index it hitted the board
     private int[] posBoard;
 
-    public Board(int width, int height) {
-        super(width, height);
+    public Board(int positionX, int positionY, int width, int height) {
+        super(positionX, positionY,width, height);
         this.posBoard = new int[width];
     }
 
@@ -21,8 +21,6 @@ public class Board extends Unit{
     public int[] getPosBoard() {
         return this.posBoard;
     }
-
-
 
     @Override
     public void move(int direction) {               // 0-left 1-right

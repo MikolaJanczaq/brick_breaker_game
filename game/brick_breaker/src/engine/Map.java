@@ -1,19 +1,12 @@
 package engine;
-
-import objects.Ball;
-import objects.Board;
-import objects.Brick;
 import objects.Unit;
+import java.util.HashMap;
 
 public class Map {
     private int width;
     private int height;
-    private int bricks_proportion = 2; // means 100% / bricks_proportion ---> 100% / 2 = 50% of map are bricks
-    private int bricks_num;
 
-    private Unit[][] units_game;
-    private Brick[] bricks;
-
+    private HashMap<String, Unit> unitMap;
 
     public int getWidth() {
         return width;
@@ -31,50 +24,38 @@ public class Map {
     Map(int width, int height) {
         this.width = width;
         this.height = height;
-        units_game = new Unit[height][width];
-        bricks_num = calculateBricksNum();
-        bricks = new Brick[bricks_num];
-
-        fill_bricks();
+        unitMap = new HashMap<>();
     }
 
-
-    private int calculateBricksNum() {
-        return (((width*height) / bricks_proportion) / width) * width; //provide that every row is filled without any gaps
+    public int getCenterX() {
+        return this.getWidth()/2;
     }
 
-
-    private void createBricks() {
-        for (int i = 0; i < bricks_num; i++) {
-            bricks[i] = new Brick(0,0);
-        }
+    public int getCenterY() {
+        return this.getHeight()/2;
     }
 
-    private void fill_bricks() {
-        createBricks();
-        for(int i=0; i<bricks_num; i++) {
-            units_game[height-1-i/width][i%width] = bricks[i];
-            bricks[i].setPosition_x(i%width);
-            bricks[i].setPosition_y(height-1-i/width);
-        }
+    public void addUnit(Unit unit) {
+        String key = unit.getPositionX() + "_" + unit.getPositionY();
+        unitMap.put(key, unit);
     }
 
-    public void insert_board(Board board) {
-        for(int i=0; i<board.getWidth(); i++) {
-            units_game[0][getWidth()/2- board.getWidth()+1+i] = board; // setting board in the middle of the lowest row
-            board.setDirectionPosition(i, getWidth()/2- board.getWidth()+1+i);
-            //to do: make sure that it doesnt go off the array range
-        }
+    public void removeUnitAt(int x, int y) {
+        String key = x + "_" + y;
+        unitMap.remove(key);
     }
 
-    public void insert_ball(Ball ball) {
-        for(int i=0; i<ball.getWidth(); i++) {
-            units_game[bricks_num/height][width/2+1] = ball;
-        }
+    public Unit getUnitAt(int x, int y) {
+        String key = x + "_" + y;
+        return unitMap.getOrDefault(key, null);
     }
 
-    public Unit[][] getUnits_game() {
-        return units_game;
-    }
+    public void moveUnit(Unit unit) {
+        String oldKey = unit.getPositionX() + "_" + unit.getPositionY();
+        unit.move(0);
+        String newKey = unit.getPositionX() + "_" + unit.getPositionY();
 
+        unitMap.remove(oldKey);
+        unitMap.put(newKey, unit);
+    }
 }

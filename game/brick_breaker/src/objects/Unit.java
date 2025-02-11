@@ -2,23 +2,25 @@ package objects;
 
 public  abstract class Unit {
 
-    private int position_x;
-    private int position_y;
+    private int positionX;
+    private int positionY;
     private int width;
     private int height;
 
-    Unit(int width, int height) {
+    Unit(int positionX, int positionY,int width, int height) {
+        this.positionX = positionX;
+        this.positionY = positionY;
         this.width = width;
         this.height=height;
     }
 
     //gettters
-    public int getPosition_x() {
-        return position_x;
+    public int getPositionX() {
+        return positionX;
     }
 
-    public int getPosition_y() {
-        return position_y;
+    public int getPositionY() {
+        return positionY;
     }
 
     public int getWidth() {
@@ -30,12 +32,12 @@ public  abstract class Unit {
     }
 
     //setters
-    public void setPosition_x(int position_x) {
-        this.position_x = position_x;
+    public void setPositionX(int positionX) {
+        this.positionX = positionX;
     }
 
-    public void setPosition_y(int position_y) {
-        this.position_y = position_y;
+    public void setPositionY(int positionY) {
+        this.positionY = positionY;
     }
 
     public void setWidth(int width) {
