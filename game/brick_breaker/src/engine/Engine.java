@@ -30,25 +30,26 @@ public class Engine {
         }
     }
 
-    private void checkCollision() {
+    private void checkCollision(int oldX, int oldY) {
         int ballX = ball.getPositionX();
         int ballY = ball.getPositionY();
 
-        // collisions with walls
+        // Kolizje ze ścianami
         if (ballX < 0) {
             ball.setPositionX(0);
             ball.setVelocity(-ball.getVelocityX(), ball.getVelocityY());
+            ballX = ball.getPositionX();
         }
         if (ballX >= map.getWidth()) {
             ball.setPositionX(map.getWidth() - 1);
             ball.setVelocity(-ball.getVelocityX(), ball.getVelocityY());
+            ballX = ball.getPositionX();
         }
-
         if (ballY < 0) {
             ball.setPositionY(0);
             ball.setVelocity(ball.getVelocityX(), -ball.getVelocityY());
+            ballY = ball.getPositionY();
         }
-
         if (ballY >= map.getHeight()) {
             gameOver = true;
             System.out.println("Game Over: Ball outside the map!");
@@ -57,11 +58,12 @@ public class Engine {
 
         // collisions with bricks
         Unit unit = map.getUnitAt(ballX, ballY);
-        if (unit != null) {
-            if (unit instanceof Brick) {
-                map.removeUnitAt(ballX, ballY);
-                ball.setVelocity(ball.getVelocityX(), -ball.getVelocityY());
-            }
+        if (unit != null && unit instanceof Brick) {
+            map.removeUnitAt(ballX, ballY);
+            ball.setPositionX(oldX);
+            ball.setPositionY(oldY);
+            ball.setVelocity(ball.getVelocityX(), -ball.getVelocityY());
+            return;
         }
 
         // collision with board
@@ -92,14 +94,12 @@ public class Engine {
     }
 
     public void Analysis() {
+        int oldX = ball.getPositionX();
+        int oldY = ball.getPositionY();
         map.moveUnit(ball, 0);
-        checkCollision();
+        checkCollision(oldX, oldY);
     }
 
-    /**
-     * board movement
-     * 0 - left, 1 - right.
-     */
     public void moveBoard(int direction) {
         if (direction == 0) {
             if (board.getPositionX() > 0) {
