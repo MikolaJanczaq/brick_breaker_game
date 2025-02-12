@@ -23,7 +23,7 @@ Brick Breaker to klasyczna gra zręcznościowa inspirowana Arkanoidem, napisana 
 ## 🔧 Instalacja i uruchomienie
 1. **Sklonuj repozytorium**:
    ```bash
-   git clone https://github.com/TwojGitHub/brick-breaker.git
+   git clone https://github.com/MikolajJanczaq/brick-breaker.git
    cd brick-breaker
    ```
 2. **Skompiluj i uruchom projekt w terminalu**:
