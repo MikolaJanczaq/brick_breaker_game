@@ -5,7 +5,7 @@ import engine.Engine;
 import javax.swing.*;
 
 public class GameFrame extends JFrame {
-    private int width = 800;
+    private int width = 515;
     private int height = 600;
     private String title = "Brick breaker";
 

@@ -61,7 +61,7 @@ public class GamePanel extends JPanel {
 
 
     private void initTimer() {
-        Timer timer = new Timer(500, new ActionListener() {
+        Timer timer = new Timer(300, new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 engine.Analysis();
                 repaint();

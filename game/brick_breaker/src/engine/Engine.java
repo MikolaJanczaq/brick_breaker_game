@@ -18,6 +18,10 @@ public class Engine {
         return this.gameOver;
     }
 
+    public void setGameOver(boolean gameOver) {
+        this.gameOver = gameOver;
+    }
+
     private int calculateBricksNum() {
         return (((map.getWidth()* map.getWidth()) / bricks_proportion) / map.getWidth()) * map.getWidth(); //provide that every row is filled without any gaps
     }
@@ -53,6 +57,7 @@ public class Engine {
         if (ballY >= map.getHeight()) {
             gameOver = true;
             System.out.println("Game Over: Ball outside the map!");
+
             return;
         }
 
