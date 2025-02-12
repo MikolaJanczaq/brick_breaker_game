@@ -38,17 +38,17 @@ public class Engine {
         if (ballX < 0) {
             ball.setPositionX(0);
             ball.setVelocity(-ball.getVelocityX(), ball.getVelocityY());
-            ballX = ball.getPositionX();
+            return;
         }
         if (ballX >= map.getWidth()) {
             ball.setPositionX(map.getWidth() - 1);
             ball.setVelocity(-ball.getVelocityX(), ball.getVelocityY());
-            ballX = ball.getPositionX();
+            return;
         }
         if (ballY < 0) {
             ball.setPositionY(0);
             ball.setVelocity(ball.getVelocityX(), -ball.getVelocityY());
-            ballY = ball.getPositionY();
+            return;
         }
         if (ballY >= map.getHeight()) {
             gameOver = true;
@@ -57,13 +57,24 @@ public class Engine {
         }
 
         // collisions with bricks
-        Unit unit = map.getUnitAt(ballX, ballY);
-        if (unit != null && unit instanceof Brick) {
-            map.removeUnitAt(ballX, ballY);
-            ball.setPositionX(oldX);
-            ball.setPositionY(oldY);
-            ball.setVelocity(ball.getVelocityX(), -ball.getVelocityY());
-            return;
+        if (oldX != ballX) {
+            Unit unitX = map.getUnitAt(ballX, oldY);
+            if (unitX instanceof Brick) {
+                map.removeUnitAt(ballX, oldY);
+                ball.setVelocity(-ball.getVelocityX(), ball.getVelocityY());
+                ball.setPositionX(oldX);
+                return;
+            }
+        }
+
+        if (oldY != ballY) {
+            Unit unitY = map.getUnitAt(oldX, ballY);
+            if (unitY instanceof Brick) {
+                map.removeUnitAt(oldX, ballY);
+                ball.setVelocity(ball.getVelocityX(), -ball.getVelocityY());
+                ball.setPositionY(oldY);
+                return;
+            }
         }
 
         // collision with board
@@ -76,7 +87,7 @@ public class Engine {
     }
 
     public Engine() {
-        this.map = new Map(5, 6);
+        this.map = new Map(10, 10);
 
         int boardWidth = 3;
         int boardX = (map.getWidth() - boardWidth) / 2;
