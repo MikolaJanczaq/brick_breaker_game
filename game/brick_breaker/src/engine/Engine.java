@@ -81,8 +81,18 @@ public class Engine {
         if (ballY == board.getPositionY() - 1
                 && ballX >= board.getPositionX()
                 && ballX < board.getPositionX() + board.getWidth()) {
+
+            int hitPosition = ballX - board.getPositionX();
+
+            if (hitPosition == 0) {
+                ball.setVelocity(-1, -Math.abs(ball.getVelocityY()));
+            } else if (hitPosition == board.getWidth() - 1) {
+                ball.setVelocity(1, -Math.abs(ball.getVelocityY()));
+            } else {
+                ball.setVelocity(ball.getVelocityX(), -Math.abs(ball.getVelocityY()));
+            }
+
             ball.setPositionY(board.getPositionY() - 1);
-            ball.setVelocity(ball.getVelocityX(), -Math.abs(ball.getVelocityY()));
         }
     }
 
