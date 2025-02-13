@@ -7,15 +7,23 @@ import objects.Ball;
 import objects.Brick;
 import objects.Unit;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
 public class GamePanel extends JPanel {
     private final int scale = 50;
     private Engine engine;
     private Map map;
+
+    //textures
+    private BufferedImage brickImage;
+    private BufferedImage ballImage;
+    private BufferedImage boardImage;
 
     public GamePanel(Engine engine) {
         this.engine = engine;
@@ -26,6 +34,15 @@ public class GamePanel extends JPanel {
         initTimer();
         initKeyBindings();
 
+        try {
+            brickImage = ImageIO.read(getClass().getResource("/textures/brick.png"));
+            ballImage = ImageIO.read(getClass().getResource("/textures/ball.png"));
+            boardImage = ImageIO.read(getClass().getResource("/textures/board.png"));
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -35,27 +52,33 @@ public class GamePanel extends JPanel {
             int x = i % map.getWidth();
             int y = i / map.getWidth();
             Unit unit = map.getUnitAt(x, y);
-            if(unit != null && unit instanceof Brick) {
-                g2d.setColor(Color.RED);
-                g2d.fillRect(x*scale, y*scale, scale, scale);
+            if(unit instanceof Brick) {
+                g2d.drawImage(brickImage,
+                        x*scale,
+                        y*scale,
+                        scale,
+                        scale,
+                        null);
             }
         }
 
 
         Board board = engine.getBoard();
-        g2d.setColor(Color.ORANGE);
-        g2d.fillRect(board.getPositionX()*scale,
-                        board.getPositionY()*scale,
-                        board.getWidth()*scale,
-                        board.getHeight()*scale);
+        g2d.drawImage(boardImage,
+                board.getPositionX()*scale,
+                board.getPositionY()*scale,
+                board.getWidth()*scale,
+                board.getHeight()*scale,
+                null);
 
 
         Ball ball = engine.getBall();
-        g2d.setColor(Color.GREEN);
-        g2d.fillOval(ball.getPositionX()*scale,
-                    ball.getPositionY()*scale,
+        g2d.drawImage(ballImage,
+                ball.getPositionX()*scale,
+                ball.getPositionY()*scale,
                 ball.getWidth()*scale,
-                ball.getHeight()*scale);
+                ball.getHeight()*scale,
+                null);
 
     }
 
