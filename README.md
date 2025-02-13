@@ -24,14 +24,14 @@ Brick Breaker to klasyczna gra zręcznościowa inspirowana Arkanoidem, napisana 
 1. **Sklonuj repozytorium**:
    ```bash
    git clone https://github.com/MikolajJanczaq/brick-breaker.git
-   cd brick-breaker
    ```
 2. **Skompiluj i uruchom projekt w terminalu**:
    ```bash
-   javac -d bin -sourcepath src src/game/GameFrame.java
-   java -cp bin game.GameFrame
+   cd brick_breaker_game/brick_breaker/
+   javac -d ../out/production/brick_breaker src/Main.java src/engine/*.java src/game/*.java src/objects/*.java
+   java -cp ../out/production/brick_breaker Main
    ```
-   **Lub otwórz w IntelliJ / Eclipse i uruchom GameFrame.java**
+   **Lub otwórz w IntelliJ / Eclipse i uruchom Main.java**
 
 ---
 
