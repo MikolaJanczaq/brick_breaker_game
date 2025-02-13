@@ -42,14 +42,22 @@ Brick Breaker to klasyczna gra zręcznościowa inspirowana Arkanoidem, napisana 
 ---
 
 ## 📸 Zrzuty ekranu
-Demo
+
+#Demo
+
 ![demo](https://github.com/user-attachments/assets/3c4ce218-f007-4ad0-8bcd-3fe5e84fc52b)
 
-Start
+
+
+#Start
+
 ![start](https://github.com/user-attachments/assets/71421abe-40ae-4a23-ad78-3e31486bf5d9)
 
 
-Gameplay
+
+#Gameplay
+
+
 ![gameplay1](https://github.com/user-attachments/assets/7ebe4b9c-e487-4e8e-a91e-2eacb256bdd0)
 
 
